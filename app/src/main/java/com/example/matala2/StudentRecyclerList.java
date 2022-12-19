@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.TextView;
 
@@ -36,6 +37,13 @@ public class StudentRecyclerList extends AppCompatActivity {
             @Override
             public void onItemClick(int pos) {
                 Log.d("TAG", "Row wad clicked"+ pos);
+            }
+        });
+
+        final Button button = findViewById(R.id.studentrecycler_btn);
+        button.setOnClickListener(new View.OnClickListener() {
+            public void onClick(View view) {
+                // Code here executes on main thread after user presses button
             }
         });
     }
@@ -76,11 +84,14 @@ public class StudentRecyclerList extends AppCompatActivity {
     public  interface  OnItemClickListener{
         void onItemClick(int pos);
     }
+
     class StudentRecyclerAdapter extends RecyclerView.Adapter<StudentViewHolder>{
         OnItemClickListener listener;
         void setOnItemClickListener(OnItemClickListener listener){
             this.listener = listener;
         }
+
+
         @NonNull
         @Override
         public StudentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {

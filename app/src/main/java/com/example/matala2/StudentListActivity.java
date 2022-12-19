@@ -6,16 +6,23 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.BaseAdapter;
+import android.widget.CheckBox;
 import android.widget.ListView;
 import android.widget.TextView;
 
-public class StudentListActivity extends AppCompatActivity {
+import com.example.matala2.model.Model;
+import com.example.matala2.model.Student;
 
+import java.util.List;
+
+public class StudentListActivity extends AppCompatActivity {
+    List<Student> data;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_student_list);
 
+        data = Model.instance().getAllStudents();
         ListView list = findViewById(R.id.studentList_list);
         list.setAdapter(new StudentListAdapter());
     }
@@ -24,7 +31,7 @@ public class StudentListActivity extends AppCompatActivity {
 
         @Override
         public int getCount() {
-            return 10;
+            return data.size();
         }
 
         @Override
@@ -41,9 +48,24 @@ public class StudentListActivity extends AppCompatActivity {
         public View getView(int pos, View view, ViewGroup viewGroup) {
             if(view == null){
                 view = getLayoutInflater().inflate(R.layout.student_list_row,null);
+                CheckBox cb = view.findViewById(R.id.studentlistrow_cb);
+                cb.setOnClickListener((new View.OnClickListener(){
+
+                    @Override
+                    public void onClick(View view) {
+                        int pos = (int)cb.getTag();
+                        Student st = data.get(pos);
+                        st.cb = cb.isChecked();
+                    }
+                }));
             }
+            Student st = data.get(pos);
             TextView nameTv = view.findViewById(R.id.studentlistrow_name_tv);
-            nameTv.setText("name" +pos);
+            TextView idTv = view.findViewById(R.id.studentlistrow_id_tv);
+            CheckBox cb = view.findViewById(R.id.studentlistrow_cb);
+            cb.setTag(pos);
+            nameTv.setText(st.getName());
+            idTv.setText(st.getId());
             return view;
         }
     }

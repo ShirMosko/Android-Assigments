@@ -3,8 +3,10 @@ package com.example.matala2;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.os.Bundle;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
 import android.widget.BaseAdapter;
 import android.widget.CheckBox;
 import android.widget.ListView;
@@ -25,6 +27,13 @@ public class StudentListActivity extends AppCompatActivity {
         data = Model.instance().getAllStudents();
         ListView list = findViewById(R.id.studentList_list);
         list.setAdapter(new StudentListAdapter());
+
+        list.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int pos, long l) {
+                Log.d("TAG", "row was clicked" +pos);
+            }
+        });
     }
 
     class StudentListAdapter extends BaseAdapter{
@@ -63,7 +72,9 @@ public class StudentListActivity extends AppCompatActivity {
             TextView nameTv = view.findViewById(R.id.studentlistrow_name_tv);
             TextView idTv = view.findViewById(R.id.studentlistrow_id_tv);
             CheckBox cb = view.findViewById(R.id.studentlistrow_cb);
+
             cb.setTag(pos);
+            cb.setChecked(st.getCb());
             nameTv.setText(st.getName());
             idTv.setText(st.getId());
             return view;

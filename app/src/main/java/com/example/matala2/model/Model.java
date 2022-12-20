@@ -27,4 +27,12 @@ public class Model {
         data.add(st);
     }
 
+    public void updateStudent (int pos, Student newSt){
+        data.set(pos,newSt);
+    }
+
+    public void removeStudent(int pos){
+        data.remove(pos);
+    }
+
 }

@@ -6,7 +6,6 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.example.matala2.model.Model;
@@ -37,7 +36,7 @@ public class StudentDetailsActivity extends AppCompatActivity {
         idTv = findViewById(R.id.studentdetails_id_tv);
         phoneTv = findViewById(R.id.studentdetails_phone_tv);
         addressTv = findViewById(R.id.studentdetails_address_tv);
-        cb = findViewById(R.id.studentdetails_cb);
+        cb = findViewById(R.id.editstudent_cb);
         Button editBtn = findViewById(R.id.studentdetails_edit_btn);
 
         nameTv.setText(st.name);

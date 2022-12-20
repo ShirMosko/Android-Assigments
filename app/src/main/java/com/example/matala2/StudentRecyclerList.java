@@ -5,6 +5,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
 import android.view.View;
@@ -36,14 +37,15 @@ public class StudentRecyclerList extends AppCompatActivity {
         adapter.setOnItemClickListener(new OnItemClickListener() {
             @Override
             public void onItemClick(int pos) {
-                Log.d("TAG", "Row wad clicked"+ pos);
+
             }
         });
 
         final Button button = findViewById(R.id.studentrecycler_btn);
         button.setOnClickListener(new View.OnClickListener() {
             public void onClick(View view) {
-                // Code here executes on main thread after user presses button
+                Intent intent = new Intent(StudentRecyclerList.this, AddStudentActivity.class);
+                startActivity(intent);
             }
         });
     }

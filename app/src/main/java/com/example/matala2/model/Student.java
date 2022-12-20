@@ -3,14 +3,19 @@ package com.example.matala2.model;
 public class Student {
    public String name;
     public String id;
-    public String avatarUtl;
+    public String avatarUrl;
+    public String phone;
+    public String address;
     public Boolean cb;
 
-    public Student(String name, String id, String avatarUtl, Boolean cb) {
+
+    public Student(String name, String id, String phone, String address, String avatarUrl, Boolean cb) {
         this.name = name;
         this.id = id;
-        this.avatarUtl = avatarUtl;
+        this.avatarUrl = avatarUrl;
         this.cb = cb;
+        this.phone= phone;
+        this.address = address;
     }
 
 
@@ -31,11 +36,11 @@ public class Student {
     }
 
     public String getAvatarUtl() {
-        return avatarUtl;
+        return avatarUrl;
     }
 
     public void setAvatarUtl(String avatarUtl) {
-        this.avatarUtl = avatarUtl;
+        this.avatarUrl = avatarUtl;
     }
 
     public Boolean getCb() {
@@ -44,5 +49,21 @@ public class Student {
 
     public void setCb(Boolean cb) {
         this.cb = cb;
+    }
+
+    public String getPhone() {
+        return phone;
+    }
+
+    public void setPhone(String phone) {
+        this.phone = phone;
+    }
+
+    public String getAddress() {
+        return address;
+    }
+
+    public void setAddress(String address) {
+        this.address = address;
     }
 }

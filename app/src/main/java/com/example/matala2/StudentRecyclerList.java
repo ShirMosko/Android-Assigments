@@ -21,6 +21,7 @@ import java.util.List;
 
 public class StudentRecyclerList extends AppCompatActivity {
     List<Student> data;
+    StudentRecyclerAdapter adapter;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,7 +33,7 @@ public class StudentRecyclerList extends AppCompatActivity {
         list.setHasFixedSize(true);
 
         list.setLayoutManager(new LinearLayoutManager(this));
-        StudentRecyclerAdapter adapter = new StudentRecyclerAdapter();
+        adapter = new StudentRecyclerAdapter();
         list.setAdapter(adapter);
 
         adapter.setOnItemClickListener(new OnItemClickListener() {
@@ -52,6 +53,12 @@ public class StudentRecyclerList extends AppCompatActivity {
                 startActivity(intent);
             }
         });
+    }
+
+    @Override
+    protected void onStart() {
+        super.onStart();
+        adapter.notifyDataSetChanged();
     }
 
     class StudentViewHolder extends RecyclerView.ViewHolder{

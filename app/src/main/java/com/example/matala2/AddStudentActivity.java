@@ -6,7 +6,6 @@ import android.os.Bundle;
 import android.widget.Button;
 import android.widget.CheckBox;
 import android.widget.EditText;
-import android.widget.TextView;
 
 import com.example.matala2.model.Model;
 import com.example.matala2.model.Student;
@@ -18,13 +17,13 @@ public class AddStudentActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_add_student);
 
-        EditText nameEt = findViewById(R.id.addstudent_name_et);
-        EditText idEt = findViewById(R.id.addstudent_id_et);
-        EditText phoneEt = findViewById(R.id.addstudent_phone);
-        EditText addressEt = findViewById(R.id.addstudent_address_et);
-        CheckBox cb = findViewById(R.id.addstudent_cb);
+        EditText nameEt = findViewById(R.id.editstudent_name_et);
+        EditText idEt = findViewById(R.id.editstudent_id_et);
+        EditText phoneEt = findViewById(R.id.editstudent_phone);
+        EditText addressEt = findViewById(R.id.editstudent_address_et);
+        CheckBox cb = findViewById(R.id.studentdetails_cb);
 
-        Button saveBtn = findViewById(R.id.addstudent_save_btn);
+        Button saveBtn = findViewById(R.id.studentdetails_edit_btn);
         Button cancelBtn = findViewById(R.id.addstudent_cancel_btn);
 
         saveBtn.setOnClickListener(view -> {
